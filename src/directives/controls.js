@@ -17,17 +17,34 @@ angular.module("leaflet-directive").directive('controls', function ($log, leafle
             controller.getMap().then(function(map) {
                 if (isDefined(L.Control.Draw) && isDefined(controls.draw)) {
                     var drawnItems = new L.FeatureGroup();
-                    var options = {
+                    var drawOptions = {
                         edit: {
                             featureGroup: drawnItems
                         }
                     };
-                    angular.extend(options, controls.draw);
-                    controls.draw = options;
-                    map.addLayer(options.edit.featureGroup);
+                    angular.extend(drawOptions, controls.draw);
+                    controls.draw = drawOptions;
+                    map.addLayer(drawOptions.edit.featureGroup);
 
-                    var drawControl = new L.Control.Draw(options);
+                    var drawControl = new L.Control.Draw(drawOptions);
                     map.addControl(drawControl);
+                }
+
+                if (isDefined(L.Control.Filter) && isDefined(controls.filter)) {
+                    var filterFeature = new L.FeatureGroup();
+                    var filterOptions = {
+                        filter: {
+                            circle: {},
+                            rectangle: {}
+                        }
+                        filterGroup: filterFeature
+                    };
+                    angular.extend(filterOptions, controls.filter);
+                    controls.filter = filterOptions;
+                    map.addLayer(filterOptions.featureGroup);
+
+                    var filterControl = new L.Control.Filter(filterOptions);
+                    map.addControl(filterControl);
                 }
 
                 if(isDefined(controls.custom)) {
