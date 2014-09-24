@@ -1043,7 +1043,11 @@ angular.module("leaflet-directive").directive('controls', ["$log", "leafletHelpe
                 if (isDefined(L.Control.Filter) && isDefined(controls.filter)) {
                     var filterFeature = new L.FeatureGroup();
                     var filterOptions = {
-                        featureGroup: filterFeature
+                        filter: {
+                            circle: {},
+                            rectangle: {}
+                        },
+                        filterGroup: filterFeature
                     };
                     angular.extend(filterOptions, controls.filter);
                     controls.filter = filterOptions;

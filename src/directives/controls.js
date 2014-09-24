@@ -36,7 +36,7 @@ angular.module("leaflet-directive").directive('controls', function ($log, leafle
                         filter: {
                             circle: {},
                             rectangle: {}
-                        }
+                        },
                         filterGroup: filterFeature
                     };
                     angular.extend(filterOptions, controls.filter);
