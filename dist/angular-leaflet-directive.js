@@ -1051,7 +1051,7 @@ angular.module("leaflet-directive").directive('controls', ["$log", "leafletHelpe
                     };
                     angular.extend(filterOptions, controls.filter);
                     controls.filter = filterOptions;
-                    map.addLayer(filterOptions.featureGroup);
+                    map.addLayer(filterOptions.filterGroup);
 
                     var filterControl = new L.Control.Filter(filterOptions);
                     map.addControl(filterControl);
