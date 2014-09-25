@@ -14,5 +14,3 @@ js/angular-leaflet-directive-webpage.ngmin.js
 coverage
 bower_components
 saucelabs.json
-lib
-
